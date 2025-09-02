@@ -28,6 +28,16 @@
     elem_t elist[NUM_ELS];
     float alpha;
     
+    // For multi-display support - different seed for each instance
+    NSUInteger displaySeed;
+    
+    // Instance-specific oscillators for multi-display support
+    void *theta;
+    void *rad;
+    void *alti;
+    void *color;
+    void *shape_osc;
+    
     BOOL wireframe;
     BOOL edges;
     int shape;
@@ -63,5 +73,9 @@
 - (IBAction) closeSheet_cancel:(id) sender;
 - (IBAction) updateConfigureSheet:(id) sender;
 - (IBAction) checkUpdates:(id)sender;
+
+// Multi-display support methods
+- (void) initInstanceOscillators;
+- (void) cleanupInstanceOscillators;
 
 @end
